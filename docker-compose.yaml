@@ -10,7 +10,7 @@ services:
       MYSQL_DATABASE: msvc-usuarios
     volumes:
       - data-mysql:/var/lib/mysql
-    restart: always
+    #restart: always
     networks:
       - spring
   postgres14:
@@ -23,7 +23,7 @@ services:
       POSTGRES_DB: msvc-cursos
     volumes:
       - data-postgres:/var/lib/postgresql/data
-    restart: always
+    #restart: always
     networks:
       - spring
 # Uncomment and configure your application services if needed
@@ -47,7 +47,7 @@ services:
      - spring
    depends_on:
      - mysql8
-   restart: always
+   #restart: always
   msvc-cursos:
     container_name: msvc-cursos
     image: cursos
@@ -69,7 +69,7 @@ services:
     depends_on:
       - postgres14
       - msvc-usuarios
-    restart: always
+    #restart: always
 volumes:
   data-mysql:
     name: data-mysql

@@ -1,0 +1,26 @@
+app = "mi-mysql"
+primary_region = "mia"
+
+[build]
+image = "mysql:8"
+
+[env]
+MYSQL_ROOT_PASSWORD = "secret"
+MYSQL_DATABASE = "mydb"
+
+[mounts]
+source = "dbdata"
+destination = "/var/lib/mysql"
+
+[resources]
+cpu = 2
+memory = 1024
+
+[[services]]
+internal_port = 3306
+protocol = "tcp"
+
+[[services.tcp_checks]]
+interval = "15s"
+timeout = "10s"
+grace_period = "60s"
